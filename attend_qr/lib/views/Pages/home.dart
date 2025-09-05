@@ -1,4 +1,3 @@
-import 'package:attend_qr/views/widgets/navbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -11,6 +10,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("HOME"));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("AttendQR!", style: TextStyle(fontWeight: FontWeight.bold)),
+        centerTitle: false,
+      ),
+    );
   }
 }

@@ -13,10 +13,6 @@ class WidgetTree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("AttendQR!", style: TextStyle(fontWeight: FontWeight.bold)),
-        centerTitle: false,
-      ),
       body: ValueListenableBuilder(
         valueListenable: selecteddPageNotifier,
         builder: (context, selectedPage, child) {

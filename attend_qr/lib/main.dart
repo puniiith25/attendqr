@@ -1,4 +1,3 @@
-import 'package:attend_qr/views/Pages/home.dart';
 import 'package:attend_qr/views/widget_tree.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ATTENDQR',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
       home: const WidgetTree(),
     );
   }
