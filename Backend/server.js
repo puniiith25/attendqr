@@ -1,26 +1,22 @@
 import express from 'express'
 import cors from 'cors'
+import cookieParser from 'cookie-parser';
 import 'dotenv/config'
-import Database from './Database/Database.js';
-import cookieParser from 'cookie-parser'
-import studentLoginRoute from './Routes/StudentRoutes/StudentLoginRoute.js';
+import { Database } from './DataBase/DataBase.js';
+import userRouter from './Routers/userRouter.js';
 
 const app = express();
-const port = 4000;
 app.use(express.json());
+
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(cookieParser());
+const PORT = process.env.PORT || 4000;
 
-
-const AllowOrigin = 'http://localhost:5173'
-app.use(cors({ origin: AllowOrigin, credentials: true }));
 
 Database();
-app.get('/', (req, res) => {
-    res.send("running");
-})
 
-app.use('/student', studentLoginRoute);
 
-app.listen(port, () => {
-    console.log(`the Server Running on http://localhost:${port}`);
+app.use('/user', userRouter)
+app.listen(PORT, () => {
+    console.log(`Server Running On http://localhost:${PORT}`);
 })

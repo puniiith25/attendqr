@@ -1,7 +1,5 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
-const Database = () => {
-    mongoose.connect(process.env.DatabaseLink).then(() => console.log('Database Connected')).catch(() => console.log('Database Errorr'))
-}
-
-export default Database;
+export const Database = () => {
+    mongoose.connect(process.env.MONGODB_LINK).then(() => console.log('DataBase Connected')).catch(() => console.log('Error While connect database'))
+} 
