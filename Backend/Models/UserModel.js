@@ -8,7 +8,16 @@ const UserSchema = new mongoose.Schema({
         type: String,
         enum: ["admin", "student", "teacher"],
         default: "student"
-    }
+    },
+    section: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Section"
+    },
+    sections: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Section"
+    }]
+
 }, { timestamps: true });
 
 const UserModel = mongoose.model("User", UserSchema);

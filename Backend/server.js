@@ -4,6 +4,8 @@ import cookieParser from 'cookie-parser';
 import 'dotenv/config'
 import { Database } from './DataBase/DataBase.js';
 import userRouter from './Routers/userRouter.js';
+import sectionRouter from './Routers/sectionRouter.js';
+import detailRouter from './Routers/userdetailsRouter.js';
 
 const app = express();
 app.use(express.json());
@@ -16,7 +18,9 @@ const PORT = process.env.PORT || 4000;
 Database();
 
 
-app.use('/user', userRouter)
+app.use('/user', userRouter);
+app.use('/section', sectionRouter);
+app.use('/details', detailRouter)
 app.listen(PORT, () => {
     console.log(`Server Running On http://localhost:${PORT}`);
 })
