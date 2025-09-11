@@ -6,6 +6,7 @@ import { Database } from './DataBase/DataBase.js';
 import userRouter from './Routers/userRouter.js';
 import sectionRouter from './Routers/sectionRouter.js';
 import detailRouter from './Routers/userdetailsRouter.js';
+import attendanceRouter from './Routers/attendanceRouter.js';
 
 const app = express();
 app.use(express.json());
@@ -20,7 +21,8 @@ Database();
 
 app.use('/user', userRouter);
 app.use('/section', sectionRouter);
-app.use('/details', detailRouter)
+app.use('/details', detailRouter);
+app.use('/attendance', attendanceRouter);
 app.listen(PORT, () => {
     console.log(`Server Running On http://localhost:${PORT}`);
 })

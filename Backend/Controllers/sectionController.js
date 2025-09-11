@@ -22,6 +22,7 @@ export const createSection = async (req, res) => {
 export const assignStudents = async (req, res) => {
     try {
         const { sectionId, studentIds } = req.body;
+        if (req.user.role !== "admin") return res.status(403).json({ message: "Only admin can assign a student" });
 
         const section = await SectionModel.findById(sectionId);
         if (!section) return res.json({ success: false, message: "Section not found" });
@@ -41,6 +42,7 @@ export const assignStudents = async (req, res) => {
 export const assignTeachers = async (req, res) => {
     try {
         const { sectionId, teacherIds } = req.body;
+        if (req.user.role !== "admin") return res.status(403).json({ message: "Only admin can assign Teacher" });
 
         const section = await SectionModel.findById(sectionId);
         if (!section) return res.json({ success: false, message: "Section not found" });
@@ -57,14 +59,25 @@ export const assignTeachers = async (req, res) => {
 };
 
 //  Add Subjects
+// Add Subjects with teacher
 export const addSubjects = async (req, res) => {
     try {
         const { sectionId, subjects } = req.body;
+        // subjects = [{ name: "Maths", teacher: "<teacherId>" }]
+
+        if (req.user.role !== "admin")
+            return res.status(403).json({ message: "Only admin can assign Subject" });
 
         const section = await SectionModel.findById(sectionId);
-        if (!section) return res.json({ success: false, message: "Section not found" });
+        if (!section)
+            return res.json({ success: false, message: "Section not found" });
 
-        section.subjects.push(...subjects);
+        // Optional: prevent duplicates
+        subjects.forEach(sub => {
+            const exists = section.subjects.find(s => s.name === sub.name);
+            if (!exists) section.subjects.push(sub);
+        });
+
         await section.save();
 
         res.json({ success: true, message: "Subjects added", section });
@@ -77,15 +90,23 @@ export const addSubjects = async (req, res) => {
 export const addTimetable = async (req, res) => {
     try {
         const { sectionId, timetable } = req.body;
-        // timetable format: [{ day: "Monday", periods: [{ subject, teacher, time }] }]
+        // timetable format: [{ day, date, periods: [{ subject, teacher, time }] }]
+        if (req.user.role !== "admin") return res.status(403).json({ message: "Only admin can add TimeTable" });
 
         const section = await SectionModel.findById(sectionId);
         if (!section) return res.json({ success: false, message: "Section not found" });
 
-        section.timetable = timetable;
+        // append each new timetable entry
+        timetable.forEach(t => {
+            const exists = section.timetable.find(tt => tt.date === t.date);
+            if (!exists) {
+                section.timetable.push(t);
+            }
+        });
+
         await section.save();
 
-        res.json({ success: true, message: "Timetable added", section });
+        res.json({ success: true, message: "Timetable added successfully", section });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });
     }
