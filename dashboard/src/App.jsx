@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import { Route, Router, Routes } from "react-router-dom";
 import DashBoard from "./Pages/AdminDashBoard/DashBoard";
 import Teachers from "./Pages/AdminDashBoard/Teachers";
 import Students from "./Pages/AdminDashBoard/Students";
@@ -8,27 +8,30 @@ import TimeTables from "./Pages/AdminDashBoard/TimeTables";
 import Reports from "./Pages/AdminDashBoard/Reports";
 import Notifications from "./Pages/AdminDashBoard/Notifications";
 import Settings from "./Pages/AdminDashBoard/Settings";
-import SideBar from "./Components/SideBar";
-import Navbar from "./Components/Navbar";
-
+import Layout from "./Layout/Layout";
+import AddStudents from "./Components/AddStudents";
 const App = () => {
+  const [showAddStudent, setshowAddStudent] = useState(false);
+
   return (
     <div >
-      <Navbar />
-      <SideBar />
 
-      <div className="fex-1">
-        <Routes>
-          <Route path="/" element={<DashBoard />} />
-          <Route path="/students" element={<Students />} />
-          <Route path="/teachers" element={<Teachers />} />
-          <Route path="/sections" element={<Sections />} />
-          <Route path="/timetable" element={<TimeTables />} />
-          <Route path="/reports" element={<Reports />} />
-          <Route path="/notifications" element={<Notifications />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
-      </div>
+      {showAddStudent ? <AddStudents setshowAddStudent={setshowAddStudent}/> : <></>}
+      <Routes>
+        <Route path="/" element={<Layout />} >
+          <Route index element={<DashBoard />} />
+          <Route path="students" element={<Students setshowAddStudent={setshowAddStudent}/>} />
+
+
+          <Route path="teachers" element={<Teachers />} />
+          <Route path="sections" element={<Sections />} />
+          <Route path="timetable" element={<TimeTables />} />
+          <Route path="reports" element={<Reports />} />
+          <Route path="notifications" element={<Notifications />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+
+      </Routes>
     </div>
   );
 };

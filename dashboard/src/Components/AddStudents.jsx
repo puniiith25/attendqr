@@ -1,0 +1,68 @@
+import { ChevronDown, X } from 'lucide-react'
+import React, { useState } from 'react'
+
+const AddStudents = ({ setshowAddStudent }) => {
+    const [branch, setBranch] = useState("");
+    const [year, setyear] = useState("");
+    const mockSubjects = ['Data Structures', 'Database Systems', 'Algorithms', 'Computer Networks', 'Operating Systems'];
+    const years = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
+    return (
+        <div className='absolute inset-0 z-90 w-full h-full  backdrop-blur-md grid'>
+            <div className='place-self-center w-160 border-2 bg-[#ffffff] rounded-2xl p-10'>
+                <div className='flex justify-between'>
+                    <div>
+                        <h1 className='font-semibold text-4xl text-blue-950'>Add New Student</h1>
+                        <p className=' text-gray-500 text-[18px]'>Enter student details to create a new profile</p>
+                    </div>
+                    <X onClick={() => setshowAddStudent(false)} className='cursor-pointer h-14 w-10' />
+                </div>
+                <div className='mt-5'>
+                    <h3 className='font-semibold ml-1'>Full Name</h3>
+                    <input type="text" name="name" className='border-0 p-3 w-full rounded bg-gray-200' placeholder='Enter student name' />
+                </div>
+                <div className='mt-5'>
+                    <h3 className='font-semibold ml-1'>Email</h3>
+                    <input type="text" name="name" className='border-0 p-3 w-full rounded bg-gray-200' placeholder='student@edu.com' />
+                </div>
+                <div className='mt-5'>
+                    <h3 className='font-semibold ml-1'>Password</h3>
+                    <input type="text" name="name" className='border-0 p-3 w-full rounded bg-gray-200' placeholder='Password' />
+                </div>
+                <div className='mt-5'>
+                    <h3 className='font-semibold ml-1'>Roll Number</h3>
+                    <input type="text" name="name" className='border-0 p-3 w-full rounded bg-gray-200' placeholder='CSE0025' />
+                </div>
+                <div className=' relative flex flex-col mt-3'>
+                    <label className='font-semibold ml-1'>Select Branch</label>
+                    <div className=' border-0 p-3  w-full  rounded bg-gray-200'>
+                        <select className='appearance-none outline-0 w-full cursor-pointer' value={branch} onChange={(e) => setBranch(e.target.value)}>
+                            <option value="">Choose Branch</option>
+                            {mockSubjects.map((item, index) => (
+                                <option key={index} value={item}>{item}</option>
+                            ))}
+                        </select>
+                        <ChevronDown className="absolute z-4 text-gray-600 right-3 top-9 cursor-pointer " />
+
+                    </div>
+                </div>
+                <div className=' relative flex flex-col mt-3'>
+                    <label className='font-semibold ml-1'>Year</label>
+                    <div className=' border-0 p-3  w-full  rounded bg-gray-200'>
+                        <select className='appearance-none outline-0 w-full cursor-pointer' value={year} onChange={(e) => setyear(e.target.value)}>
+                            <option value="">Select year</option>
+                            {years.map((item, index) => (
+                                <option key={index} value={item}>{item}</option>
+                            ))}
+                        </select>
+                        <ChevronDown className="absolute z-4 text-gray-600 right-3 top-9 cursor-pointer " />
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    )
+}
+
+export default AddStudents
