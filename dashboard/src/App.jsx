@@ -10,20 +10,23 @@ import Notifications from "./Pages/AdminDashBoard/Notifications";
 import Settings from "./Pages/AdminDashBoard/Settings";
 import Layout from "./Layout/Layout";
 import AddStudents from "./Components/AddStudents";
+import AddTeacher from "./Components/Addteachers";
 const App = () => {
   const [showAddStudent, setshowAddStudent] = useState(false);
+  const [showAddteacher, setshowAddTeacher] = useState(false);
 
   return (
     <div >
 
       {showAddStudent ? <AddStudents setshowAddStudent={setshowAddStudent}/> : <></>}
+      {showAddteacher ? <AddTeacher setshowAddTeacher={setshowAddTeacher}/>:<></>}
       <Routes>
         <Route path="/" element={<Layout />} >
           <Route index element={<DashBoard />} />
           <Route path="students" element={<Students setshowAddStudent={setshowAddStudent}/>} />
 
 
-          <Route path="teachers" element={<Teachers />} />
+          <Route path="teachers" element={<Teachers setshowAddTeacher={setshowAddTeacher}/>} />
           <Route path="sections" element={<Sections />} />
           <Route path="timetable" element={<TimeTables />} />
           <Route path="reports" element={<Reports />} />

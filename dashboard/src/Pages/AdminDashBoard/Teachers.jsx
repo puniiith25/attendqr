@@ -2,7 +2,7 @@ import { Edit, Search, Trash2 } from 'lucide-react'
 import React from 'react'
 import { teacher_list } from '../../assets/TeacherData'
 
-const Teachers = () => {
+const Teachers = ({ setshowAddTeacher }) => {
   return (
     <div className='border-2 mt-3 rounded p-6 border-gray-300'>
       <h1 className='font-semibold text-2xl'>Teachers Management </h1>
@@ -13,7 +13,7 @@ const Teachers = () => {
           <input type="text" name="search" placeholder='Search students...' className='ml-2 border-0 focus:outline-none' />
         </div>
         <div className='border-0 rounded w-50 flex justify-center mt-4 bg-blue-950 text-white cursor-pointer'>
-          <button type="button" className='font-semibold cursor-pointer'>+Add Teacher</button>
+          <button type="button" className='font-semibold cursor-pointer' onClick={() => setshowAddTeacher(true)}>+Add Teacher</button>
         </div>
       </div>
       <div className='border-2 border-gray-300 mt-15 p-4 rounded'>

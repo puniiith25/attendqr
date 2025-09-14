@@ -58,6 +58,10 @@ const AddStudents = ({ setshowAddStudent }) => {
 
                     </div>
                 </div>
+                <div className='w-full flex gap-4 justify-end mt-10 '>
+                    <button className='border-2 p-2 rounded-2xl w-35 text-2xl bg-gray-200 cursor-pointer' onClick={() => setshowAddStudent(false)}> cancel</button>
+                    <button className='border-2 p-2 rounded-2xl w-50 text-2xl flex  justify-center bg-blue-950 text-center text-white cursor-pointer'>+ Add Student</button>
+                </div>
 
 
             </div>
