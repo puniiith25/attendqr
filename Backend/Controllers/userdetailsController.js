@@ -60,3 +60,25 @@ export const getTeacherDetails = async (req, res) => {
     }
 };
 
+export const getAllTeachers = async (req, res) => {
+    try {
+        const teachers = await UserModel.find({ role: "teacher" })
+            .select("name Employeid email department sections ");
+
+        res.json({ success: true, teachers });
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+};
+
+// 👑 Admin: Get all students
+export const getAllStudents = async (req, res) => {
+    try {
+        const students = await UserModel.find({ role: "student" })
+            .select("name StudentRollNO email department branch study_year sections");
+
+        res.json({ success: true, students });
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+};

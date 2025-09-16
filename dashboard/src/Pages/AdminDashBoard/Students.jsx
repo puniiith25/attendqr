@@ -19,7 +19,7 @@ const Students = ({ setshowAddStudent }) => {
                 </div>
             </div>
             <div className='border-2 border-gray-300 mt-15 p-4 rounded'>
-                <div className='grid grid-cols-[0.65fr_1fr_1.05fr_1fr_1fr_1fr_0.4fr] border-b-2 border-gray-400 p-2 ml-3 font-semibold text-[18px]'>
+                <div className='grid grid-cols-[0.65fr_0.9fr_0.9fr_0.5fr_1fr_1fr_0.4fr] border-b-2 border-gray-400 p-2 ml-3 font-semibold text-[16px]'>
                     <p>Name</p>
                     <p>Roll Number</p>
                     <p>Branch</p>
@@ -29,15 +29,15 @@ const Students = ({ setshowAddStudent }) => {
                     <p>Action</p>
                 </div>
                 {student_list.map((item, index) => (
-                    <div key={index} className='grid grid-cols-[0.65fr_0.9fr_1.1fr_1fr_0.75fr_1.1fr_0.2fr_0.2fr] border-b text-gray-500 border-gray-300 m-4  pb-2'>
-                        <p>{item.name}</p>
-                        <p>{item.rollNumber}</p>
-                        <p>{item.branch}</p>
-                        <p>{item.year}</p>
-                        <p>{item.section}</p>
-                        <p>{item.email}</p>
-                        <Edit className='cursor-pointer' />
-                        <Trash2 className='cursor-pointer' />
+                    <div key={index} className='grid grid-cols-[0.65fr_0.7fr_1.2fr_0.6fr_0.6fr_1.4fr_0.2fr_0.2fr] border-b text-gray-500 border-gray-300 m-4 items-center    pb-2'>
+                        <p className='font-semibold'>{item.name}</p>
+                        <p className='text-[14px] ml-3'>{item.rollNumber}</p>
+                        <p className='text-[14px]'>{item.branch}</p>
+                        <p className=' flex  align-middle text-[14px] ml-3'>{item.year}</p>
+                        <p className=' flex text-[14px] ml-3'>{item.section}</p>
+                        <p className='text-[13px]'>{item.email}</p>
+                        <Edit className='cursor-pointer h-4 w-6' />
+                        <Trash2 className='cursor-pointer h-4 w-6' />
                     </div>
                 ))}
 

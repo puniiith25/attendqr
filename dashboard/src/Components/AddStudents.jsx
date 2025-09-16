@@ -8,7 +8,7 @@ const AddStudents = ({ setshowAddStudent }) => {
     const years = ['1st Year', '2nd Year', '3rd Year', '4th Year'];
     return (
         <div className='absolute inset-0 z-90 w-full h-full  backdrop-blur-md grid'>
-            <div className='place-self-center w-160 border-2 bg-[#ffffff] rounded-2xl p-10'>
+            <div className='place-self-center w-140  border-2 bg-[#ffffff] rounded-2xl p-10'>
                 <div className='flex justify-between'>
                     <div>
                         <h1 className='font-semibold text-4xl text-blue-950'>Add New Student</h1>

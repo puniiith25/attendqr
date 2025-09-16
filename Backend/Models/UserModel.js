@@ -9,6 +9,11 @@ const UserSchema = new mongoose.Schema({
         enum: ["admin", "student", "teacher"],
         default: "student"
     },
+    study_year: { type: String, default: "" },
+    branch: { type: String, default: "" },
+    department: { type: String, default: "" },
+    StudentRollNO:{type:String,default:"",unique:true},
+    Employeid: { type: String, default: "",unique:true},
     section: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Section"

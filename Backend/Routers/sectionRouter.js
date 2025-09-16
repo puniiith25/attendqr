@@ -1,5 +1,5 @@
 import express from "express";
-import { AuthMiddleWare } from "../ModdleWare/authMeddleware.js";
+import { AuthMiddleWare } from "../MiddleWare/authMeddleware.js";
 import { createSection, assignStudents, assignTeachers, addSubjects, addTimetable } from "../Controllers/sectionController.js";
 
 const sectionRouter = express.Router();

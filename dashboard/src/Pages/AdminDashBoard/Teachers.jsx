@@ -17,7 +17,7 @@ const Teachers = ({ setshowAddTeacher }) => {
         </div>
       </div>
       <div className='border-2 border-gray-300 mt-15 p-4 rounded'>
-        <div className='grid grid-cols-[0.5fr_0.6fr_0.8fr_0.8fr_0.7fr_0.7fr_0.3fr] border-b-2 border-gray-400 p-2 ml-3 font-semibold text-[18px]'>
+        <div className='grid grid-cols-[0.5fr_0.6fr_0.8fr_0.8fr_0.7fr_0.7fr_0.3fr] border-b-2 border-gray-400 p-2 ml-3 font-semibold text-[14px]'>
           <p>Name</p>
           <p>Employe Id</p>
           <p>Department</p>
@@ -28,15 +28,15 @@ const Teachers = ({ setshowAddTeacher }) => {
         </div>
         {teacher_list.map((item, index) => (
           <div key={index} className='grid grid-cols-[0.6fr_0.6fr_0.9fr_0.8fr_0.95fr_0.8fr_0.2fr_0.15fr] border-b text-gray-500 border-gray-300 m-4 items-center text-start pb-2'>
-            <p className='text-gray-700 font-semibold'>{item.name}</p>
-            <p>{item.employeeId}</p>
-            <p>{item.department}</p>
+            <p className='text-gray-700 font-semibold text-[12px]'>{item.name}</p>
+            <p className='text-[13px]'>{item.employeeId}</p>
+            <p className='text-[13px]'>{item.department}</p>
             <div className="relative group">
-              <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded text-xs">
+              <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded text-[9px] text-center">
                 {item.subjects[0]}
               </span>
               {item.subjects.length > 1 && (
-                <span className="ml-2 text-blue-600 text-xs cursor-pointer group-hover:underline">
+                <span className="ml-2 text-blue-600 text-[8px] cursor-pointer group-hover:underline">
                   +{item.subjects.length - 1} more
                 </span>
               )}
@@ -47,13 +47,13 @@ const Teachers = ({ setshowAddTeacher }) => {
               </div>
             </div>
 
-            <p>{item.email}</p>
+            <p className='text-[12px]'>{item.email}</p>
             <div className="relative group">
-              <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded text-xs">
+              <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded text-[10px]">
                 {item.sections[0]}
               </span>
               {item.sections.length > 1 && (
-                <span className="ml-2 text-blue-600 text-xs cursor-pointer group-hover:underline">
+                <span className="ml-2 text-blue-600 text-[8px] cursor-pointer group-hover:underline">
                   +{item.sections.length - 1} more
                 </span>
               )}
@@ -64,8 +64,8 @@ const Teachers = ({ setshowAddTeacher }) => {
               </div>
             </div>
 
-            <Edit className='cursor-pointer' />
-            <Trash2 className='cursor-pointer' />
+            <Edit className='cursor-pointer w-6 h-4' />
+            <Trash2 className='cursor-pointer w-6 h-4' />
           </div>
         ))}
 

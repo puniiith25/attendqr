@@ -1,5 +1,5 @@
 import express from "express";
-import { AuthMiddleWare, checkRole } from "../ModdleWare/authMeddleware.js";
+import { AuthMiddleWare, checkRole } from "../MiddleWare/authMeddleware.js";
 import {
     generateQRCode,
     markAttendanceQR,
